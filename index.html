@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Snelheids Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Video Snelheids Tracker</h1>
+        
+        <div class="controls">
+            <div class="control-group">
+                <h3>1. Video Uploaden</h3>
+                <input type="file" id="video-upload" accept=".mp4,.webm,.mov,video/*">
+                <p id="video-status" class="status">Video: nog geen bestand geladen</p>
+            </div>
+
+            <div class="control-group">
+                <h3>2. Kalibratie (Optioneel)</h3>
+                <p>Teken een lijn op de video om een bekende afstand (in het echt) aan te geven.</p>
+                <button id="btn-calibrate">Teken Kalibratielijn</button>
+                <div id="calibration-input-group" style="display: none; margin-top: 10px;">
+                    <input type="number" id="real-distance" placeholder="Afstand in meter" step="0.1">
+                    <button id="btn-save-calibration">Opslaan</button>
+                </div>
+                <p id="calibration-status" class="status">Status: Niet gekalibreerd (snelheid in px/s)</p>
+            </div>
+
+            <div class="control-group">
+                <h3>3. Tracking</h3>
+                <label for="time-step">Tijdsprong na klik (sec):</label>
+                <input type="number" id="time-step" value="0.1" step="0.05" min="0.01">
+                <button id="btn-track">Start Tracking</button>
+                <p id="tracking-status" class="status">Punten: 0 | Tip: druk S om te skippen zonder punt</p>
+                <button id="btn-undo" disabled>Laatste punt wissen</button>
+            </div>
+
+            <div class="control-group">
+                <h3>4. Resultaten</h3>
+                <button id="btn-show-results" disabled>Toon Resultaten (Play)</button>
+                <div id="results-data"></div>
+            </div>
+        </div>
+
+        <div class="video-container">
+            <video id="video-player" controls preload="metadata" playsinline></video>
+            <canvas id="overlay-canvas"></canvas>
+        </div>
+
+        <div class="speed-chart-container">
+            <div class="speed-chart-header">
+                <h3>Snelheidsgrafiek</h3>
+                <p id="speed-chart-unit" class="status">Snelheidsgrafiek: nog geen data</p>
+            </div>
+            <canvas id="speed-chart" width="900" height="260"></canvas>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

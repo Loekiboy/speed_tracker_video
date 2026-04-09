@@ -1,0 +1,157 @@
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f6f9;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #444;
+}
+
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.control-group {
+    flex: 1;
+    min-width: 250px;
+    background: #fafafa;
+    padding: 15px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button:disabled {
+    background-color: #a0c4eb;
+    cursor: not-allowed;
+}
+
+input[type="number"] {
+    padding: 8px;
+    width: 140px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 5px;
+}
+
+.status {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+/* Video Container & Canvas Overlay */
+.video-container {
+    position: relative;
+    width: min(100%, 920px, calc(68vh * 16 / 9));
+    margin: 0 auto;
+    background: #000;
+    border-radius: 6px;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+}
+
+video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+    background: #000;
+}
+
+#overlay-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* By default, you interact with the video controls */
+}
+
+/* CSS classes on body to toggle interaction mode */
+body.mode-calibrate #overlay-canvas {
+    pointer-events: auto; /* Allow interactions with canvas */
+    cursor: crosshair;
+}
+
+body.mode-track #overlay-canvas {
+    pointer-events: auto; /* Allow interactions with canvas */
+    cursor: crosshair;
+}
+
+.speed-chart-container {
+    width: min(100%, 920px);
+    margin: 18px auto 0;
+    background: #f8fafc;
+    border: 1px solid #dbe3ee;
+    border-radius: 6px;
+    padding: 12px;
+}
+
+.speed-chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+}
+
+.speed-chart-header h3 {
+    margin: 0;
+}
+
+#speed-chart {
+    position: static;
+    inset: auto;
+    width: 100%;
+    height: 260px;
+    display: block;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    pointer-events: none;
+}
+
+#results-data {
+    margin-top: 15px;
+    font-size: 1.1em;
+    color: #d9534f;
+    font-weight: bold;
+    line-height: 1.4;
+}
